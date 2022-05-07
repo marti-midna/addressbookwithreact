@@ -9,13 +9,16 @@ import { Input } from "../../components/Input";
 
 const Home = () => {
 
+  const [takeInput, setTakeInput] = useState('');
+  {console.log(takeInput)}
+
 
   return (
     <div>
       <Header />
-      <Input/>
+      <Input setTakeInput={setTakeInput}/>
       <TabBar />
-      <Main />
+      <Main takeInput={takeInput}/>
     </div>
   );
 };

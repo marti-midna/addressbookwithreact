@@ -1,23 +1,15 @@
 import styles from "./styles.module.scss";
 import { useState } from "react";
 
-export const Input = (props) => {
+export const Input = ({ takeInput, setTakeInput}) => {
 
-    const [search, setSearch] = useState('');
 
-    {console.log(search)}
-    // const changing = (e) => {
-    //     const value = e.target.value;
-    //     console.log(e.target.value);
-    //     setSearch();
-    //     // props.searching(value);
-    // }
 
     return(
         <div className="search_input">
             <form>
                 <input type="text" id="search" placeholder="ricerca contatto" 
-                value={search} onChange={(e) => setSearch(e.target.value)}/>
+                value={takeInput} onChange={(e) => setTakeInput(e.target.value)}/>
             </form>
         </div>
     )
