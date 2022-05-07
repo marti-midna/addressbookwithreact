@@ -1,4 +1,4 @@
-import "../../src/App.css";
+import styles from './styles.module.scss';
 
 export const Header = () => {
     return (

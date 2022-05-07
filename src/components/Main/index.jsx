@@ -1,7 +1,8 @@
-import "../../src/App.css";
+import styles from "./styles.module.scss";
 import { useState, useEffect } from "react";
+import { getContacts } from '../../utils'
 
-import { CardContact } from "./cardContact";
+import { CardContact } from "../CardContact";
 
 const contattiprova = [
     {
@@ -33,6 +34,12 @@ export const Main = ({search}) => {
     //creo lo stato per immagazzinare il primo array temporaneo e poi la chiamata
     const [contacts , setContacts] = useState(contattiprova);
 
+    useEffect(() => {
+        getContacts().then((data) => setContacts(data));
+    }, []);
+
+    {console.log(contacts)}
+
     //creo lo stato per immagazzinare gli elementi filtrati
     const [filteredContact, setFilteredContact ] = useState([]);
 
@@ -40,41 +47,35 @@ export const Main = ({search}) => {
     // const [filtFavorite, setFiltFavorite ] = useState([]);
     
     //faccio la chiamata e passo allo stato setContacts il mio array definitivo 
-    const getContacts = async () => {
-        const response = await fetch("https://jsonplaceholder.typicode.com/users");
-        const data = await response.json();
+    // const getContacts = async () => {
+    //     const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    //     const data = await response.json();
         
-        data.forEach(data => {
-            data[`favorite`] = false;
-        });
-        console.log(data);
-        setContacts(data);
-        setFilteredContact(data);
-    }
+    //     data.forEach(data => {
+    //         data[`favorite`] = false;
+    //     });
+    //     console.log(data);
+    //     setContacts(data);
+    //     setFilteredContact(data);
+    // }
 
-   
+    // useEffect(() => {
+    //     console.log('questi sono i contatti bitch', contacts);
+    //     const filtered = contacts.filter((contact) => {
+    //         console.log(contact);
+    //     return contact?.name?.toLowerCase().trim().includes(search.toLowerCase().trim()) ||
+    //         contact?.email?.toLowerCase().trim().includes(search.toLowerCase().trim()) ||
+    //         contact?.username?.toLowerCase().trim().includes(search.toLowerCase().trim())
+    //     });
+    //     console.log('SUCAAAAAAA', filtered.length, contacts.length);
+    //     setFilteredContact(filtered);
 
-    useEffect(() => {
-        getContacts();
-    }, []);
-
-    useEffect(() => {
-        console.log('questi sono i contatti bitch', contacts);
-        const filtered = contacts.filter((contact) => {
-            console.log(contact);
-        return contact.name.toLowerCase().trim().includes(search.toLowerCase().trim()) ||
-            contact.email.toLowerCase().trim().includes(search.toLowerCase().trim()) ||
-            contact.username.toLowerCase().trim().includes(search.toLowerCase().trim())
-        });
-        console.log('SUCAAAAAAA', filtered.length, contacts.length);
-        setFilteredContact(filtered);
-
-    }, [search]);
+    // }, [search]);
 
     return (
-        <div className="main_contact_list">
+        <div className={styles.main}>
             
-            {filteredContact.map((item, index) =>(
+            {contacts.map((item, index) =>(
                 <div key={index} className="card_singlecontain">
                     <CardContact name={item.name} phone={item.phone} email={item.email} username={item.username}/>
                 </div>
