@@ -15,18 +15,12 @@ const AggiungiContatto = lazy(() => import("./pages/AggiungiContatto"));
 
 
 function App() {
-  const [search, setSearch] = useState("");
-  const [category, setCategory] = useState("");
+  const [favorite, setFavorite] = useState([]);
 
-  const searching = (value) => {
-    setSearch(value);
-    console.log(value);
-  };
-
-  const catSelection = (value) => {
-    console.log(value);
-    setCategory(value);
-  };
+  const favoriteApp = (newArr) => {
+    setFavorite(newArr);
+    console.log('contratti filtrati in appjs',newArr);
+  }
 
   return (
     <Router>
@@ -36,7 +30,7 @@ function App() {
             path="/"
             element={
               <Suspense>
-                <Home />
+                <Home favoriteApp={favoriteApp}/>
               </Suspense>
             }
           />
@@ -44,7 +38,7 @@ function App() {
             path="/preferiti"
             element={
               <Suspense>
-                <Preferiti />
+                <Preferiti favorite={favorite}/>
               </Suspense>
             }
           />

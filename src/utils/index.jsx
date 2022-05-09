@@ -9,6 +9,4 @@
     // console.log(data);
     return data;
     
-    // setContacts(data);
-    // setFilteredContact(data);
 }

@@ -1,12 +1,21 @@
 nav {
-    background-color: #f5f5f5;
-    padding: 0.3rem 1rem;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 20px 20px 0px 0px;
+    box-shadow: 1px 1px 3px rgb(221, 221, 221);;
+    position: fixed;
+    width: 100vw;
+    height: 60px;
+    bottom: 0;
 
     ul {    
     display: flex;
-    justify-content: start;
+    align-items: center;
+    justify-content: center;
     list-style-type: none;
-    gap: 20px;
+    gap: 90px;
     }
 
     a:link,

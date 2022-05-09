@@ -30,7 +30,7 @@ const contattiprova = [
   },
 ];
 
-export const Main = ({ takeInput }) => {
+export const Main = ({ takeInput , favoriteHome}) => {
   //creo lo stato per immagazzinare il primo array temporaneo e poi la chiamata
   const [contacts, setContacts] = useState(contattiprova);
 
@@ -38,12 +38,26 @@ export const Main = ({ takeInput }) => {
     getContacts().then((data) => setContacts(data));
   }, []);
 
-  {
-    console.log(contacts);
+  {console.log(contacts);}
+  
+  const favoriteMain = (contact) => {
+
+    if (contact.favorite === false) {
+      contact.favorite = true;
+    } else if (contact.favorite === true) {
+      contact.favorite = false;
+    };
+    filtredFavorite();
+    console.log(contact)
   }
 
-  //creo lo stato per immagazzinare gli elementi filtrati
-  // const [filteredContact, setFilteredContact ] = useState([]);
+  const filtredFavorite = () => {
+
+    const newArr = contacts.filter((item) => item.favorite === true)
+    console.log("contatti filtrati", newArr);
+
+    favoriteHome(newArr)
+  }
 
   return (
     <div className={styles.main}>
@@ -65,13 +79,10 @@ export const Main = ({ takeInput }) => {
                 .includes(takeInput.toLowerCase().trim())
           )
 
-          .map((item, index) => (
-            <div key={index} className="card_singlecontain">
+          .map((contact) => (
+            <div key={contact.id}>
               <CardContact
-                name={item.name}
-                phone={item.phone}
-                email={item.email}
-                username={item.username}
+                contact={contact} favoriteMain={favoriteMain}
               />
             </div>
           ))}

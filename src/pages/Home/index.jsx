@@ -7,10 +7,14 @@ import { Main } from "../../components/Main";
 import { Input } from "../../components/Input";
 
 
-const Home = () => {
+const Home = ({favoriteApp}) => {
 
   const [takeInput, setTakeInput] = useState('');
-  {console.log(takeInput)}
+
+  const favoriteHome = (newArr) => {
+    favoriteApp(newArr);
+    console.log('contatti filtrati in home', newArr);
+  }
 
 
   return (
@@ -18,7 +22,7 @@ const Home = () => {
       <Header />
       <Input setTakeInput={setTakeInput}/>
       <TabBar />
-      <Main takeInput={takeInput}/>
+      <Main takeInput={takeInput} favoriteHome={favoriteHome}/>
     </div>
   );
 };

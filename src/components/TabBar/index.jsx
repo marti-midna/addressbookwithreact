@@ -1,4 +1,5 @@
 import styles from './styles.module.scss';
+import { AiFillHome, AiOutlineStar, AiOutlinePlusCircle } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
 // import { useState } from "react";
@@ -21,13 +22,13 @@ export const TabBar = (props) => {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+            <Link to="/preferiti"><AiOutlineStar size="2.2rem"/></Link>
             </li>
             <li>
-              <Link to="/preferiti">Preferiti</Link>
+              <Link to="/"><AiFillHome size="2rem"/></Link>
             </li>
             <li>
-              <Link to="/aggiungi-contatto">Aggiungi</Link>
+              <Link to="/aggiungi-contatto"><AiOutlinePlusCircle size="2rem"/></Link>
             </li>
           </ul>
         </nav>

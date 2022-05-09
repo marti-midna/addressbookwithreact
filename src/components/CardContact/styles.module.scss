@@ -1,7 +1,9 @@
 .card_contact {
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid rgb(221, 221, 221);
+    padding: 1rem 1rem;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 1px 1px 3px rgb(221, 221, 221);;
 
     .all{
 
@@ -10,15 +12,7 @@
         gap: 16px;
 
         .img_container {
-            width: 76px;
-            height: 76px;
-            background-color: rgb(98, 98, 98);
-
-
-            img {
-
-                background-color: rgb(98, 98, 98);
-            }
+            width: 44px;
         }
 
         .star_container {
